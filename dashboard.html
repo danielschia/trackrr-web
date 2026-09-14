@@ -24,25 +24,35 @@
 
       <section class="card shadow-sm mt-4">
         <div class="card-body">
-          <h2 class="h5 mb-3">Add new list</h2>
-          <form id="list-form">
-            <div class="mb-3">
-              <label for="list-name" class="form-label">List name</label>
-              <input type="text" id="list-name" name="name" class="form-control" required />
-            </div>
-            <div class="mb-3">
-              <label for="list-description" class="form-label">Description</label>
-              <textarea id="list-description" name="description" class="form-control" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Create list</button>
-            <div id="list-form-message" class="alert mt-3" hidden></div>
-          </form>
+          <div class="d-flex justify-content-between align-items-center mb-3 gap-3">
+            <h2 class="h5 mb-0">Lists</h2>
+            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#list-form-container" aria-expanded="false" aria-controls="list-form-container">
+              Create list
+            </button>
+          </div>
+
+          <div id="list-form-container" class="collapse">
+            <form id="list-form">
+              <div class="mb-3">
+                <label for="list-name" class="form-label">List name</label>
+                <input type="text" id="list-name" name="name" class="form-control" required />
+              </div>
+              <div class="mb-3">
+                <label for="list-description" class="form-label">Description</label>
+                <textarea id="list-description" name="description" class="form-control" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Create list</button>
+              <div id="list-form-message" class="alert mt-3" hidden></div>
+            </form>
+          </div>
         </div>
       </section>
 
       <section class="dashboard-board__columns d-flex flex-wrap gap-3 py-4" id="list-container"></section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/config.js"></script>
     <script src="static/js/app.js"></script>
     <script src="static/js/drag_and_drop.js"></script>
   </body>
