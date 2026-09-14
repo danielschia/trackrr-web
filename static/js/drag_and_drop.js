@@ -1,3 +1,4 @@
+const TRACKRR_API_BASE_URL = window.TRACKRR_API_BASE_URL || 'http://127.0.0.1:5000';
 let draggedTaskId = null;
 let draggedTaskElement = null;
 
@@ -64,20 +65,23 @@ function moveTaskCardInDom(taskId, targetListElement, position) {
 }
 
 function sendTaskMove(taskId, targetListId, position) {
-    fetch('/api/tasks/' + taskId, {
+    const token = localStorage.getItem('trackrr_access_token');
+
+    fetch(`${TRACKRR_API_BASE_URL}/tasks/${taskId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            'Authorization': token ? `Bearer ${token}` : ''
         },
         body: JSON.stringify({
             list_id: targetListId,
-            position: position
+            position: position + 1
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        if (!data || data.error) {
+    .then(async (response) => {
+        const data = await response.json().catch(() => null);
+        if (!response.ok || !data || data.error) {
             console.error('Move failed', data?.error || 'Unknown error');
             return;
         }
