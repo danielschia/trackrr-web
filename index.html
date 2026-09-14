@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="home container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4 mb-4">Welcome to Trackr</h1>
+            <p class="lead mb-4">Organize your tasks and projects with ease.</p>
+            <a href="{{ url_for('web_auth.signup_page') }}" class="btn btn-primary btn-lg me-2">Sign Up</a>
+            <a href="{{ url_for('web_auth.login_page') }}" class="btn btn-outline-secondary btn-lg">Login</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

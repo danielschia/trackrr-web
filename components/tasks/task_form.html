@@ -1,0 +1,18 @@
+<button type="button" class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="collapse" data-bs-target="#task-form-{{ list.id }}" aria-expanded="false" aria-controls="task-form-{{ list.id }}">
+    Add Task
+</button>
+<div class="collapse" id="task-form-{{ list.id }}">
+    <form method="POST" action="{{ url_for('web_task.create_task') }}" class="task-form mt-2" data-api-url="{{ url_for('tasks_api.create_task') }}">
+        <input type="hidden" name="dashboard_id" value="{{ dashboard.id }}">
+        <input type="hidden" name="list_id" value="{{ list.id }}">
+        <label for="task-title-{{ list.id }}" class="form-label small mb-1">Task Title</label>
+        <input type="text" id="task-title-{{ list.id }}" name="title" class="form-control form-control-sm mb-1" required>
+        <label for="task-description-{{ list.id }}" class="form-label small mb-1">Description</label>
+        <input type="text" id="task-description-{{ list.id }}" name="description" class="form-control form-control-sm mb-1">
+        <p class="task-form-error form-error text-danger small mb-1" aria-live="polite"></p>
+        <button type="submit" class="btn btn-outline-primary btn-sm">Add Task</button>
+        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="collapse" data-bs-target="#task-form-{{ list.id }}" aria-expanded="false" aria-controls="task-form-{{ list.id }}">
+            Cancel
+        </button>
+    </form>
+</div>
